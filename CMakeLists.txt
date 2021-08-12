@@ -20,6 +20,7 @@ target_compile_options(image PRIVATE /W0)
 target_compile_definitions(image PRIVATE __SHARED_LIB __STDC_LIB_EXT1__)
 target_include_directories(image PRIVATE library/include)
 
+build_cpp_source(enhance)
 build_cpp_source(homography)
 build_cpp_source(sobelFilter)
 build_cpp_source(thresholding)

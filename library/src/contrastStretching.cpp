@@ -19,8 +19,8 @@ void contrastStretching(Image& img, float lowerBound = 0.0f, float upperBound = 
         for(int j {0}; j < histogram(0, i); ++j)
             indices.push_back(i);
 
-    float minIndex {static_cast<float>(indices[std::ceil((indices.size() - 1) * lowerBound)])};
-    float maxIndex {static_cast<float>(indices[std::ceil((indices.size() - 1) * upperBound)])};
+    float minIndex {static_cast<float>(indices[ftoi(std::ceil((indices.size() - 1) * lowerBound))])};
+    float maxIndex {static_cast<float>(indices[ftoi(std::ceil((indices.size() - 1) * upperBound))])};
 
     Eigen::MatrixXf& imgData {img.matrix()};
     for(int i {0}; i < img.rows(); ++i)

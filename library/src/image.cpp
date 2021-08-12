@@ -199,6 +199,12 @@ void Image::remap(float lowerBound, float upperBound)
                 m_data[c](i, j) = scaleValue(m_data[c](i, j), minCoeff, maxCoeff, lowerBound, upperBound);
 }
 
+void Image::invert(float lowerBound, float upperBound)
+{
+    for(int c {0}; c < m_shape(2); ++c)
+        m_data[c].array() = upperBound - (m_data[c].array() - lowerBound);
+}
+
 void Image::threshold(float lowerBound, float upperBound)
 {
     for(int i {0}; i < m_shape(0); ++i)

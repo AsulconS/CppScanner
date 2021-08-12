@@ -52,6 +52,7 @@ public:
 
     void scale(float xScale, float yScale);
     void remap(float lowerBound = 0.0f, float upperBound = 255.0f);
+    void invert(float lowerBound = 0.0f, float upperBound = 255.0f);
     void threshold(float lowerBound = 0.0f, float upperBound = 255.0f);
     void binaryThreshold(float lowerBound = 0.0f, float upperBound = 255.0f);
     void calcHist(Eigen::MatrixXi& hist, int lowerBound = 0, int upperBound = 255);

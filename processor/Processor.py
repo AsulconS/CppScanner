@@ -13,8 +13,8 @@ class Processor:
         self.croppedImage = { 'empty' : True }
         self.switcher = {}
 
-        self.switcher['Corner Detection'] = self.opCornerDetection
         self.switcher['Process Image'] = self.opProcessImage
+        self.switcher['Corner Detection'] = self.opCornerDetection
 
         # points (img) -> [coordinates]
         # scan (img, [coordinates]) -> img
@@ -96,7 +96,6 @@ class Processor:
     def opCornerDetection(self, params):
         filename = 'temp_' + self.inputImage['name']
 
-        print(filename)
         cv2.imwrite(filename, self.inputImage['img'])
         hRadius = 5
         k = 0.04
@@ -105,6 +104,7 @@ class Processor:
         command = concat(['cornerDetection.exe', filename, hRadius, k, sf, threshold])
         os.system(command)
         img = cv2.imread(filename, cv2.IMREAD_COLOR)
+        img = self.inputImage['img'] & img
 
         os.remove(filename)
         self.outputImage['img'] = img
@@ -119,7 +119,7 @@ class Processor:
         filename = 'temp_' + self.croppedImage['name']
 
         cv2.imwrite(filename, self.croppedImage['img'])
-        command = concat(['sobelFilter.exe', filename])
+        command = concat(['enhance.exe', filename])
         os.system(command)
         img = cv2.imread(filename, cv2.IMREAD_COLOR)
 

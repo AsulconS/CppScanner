@@ -79,8 +79,15 @@ void cornerDetection(Image& img, int hRadius, float k, float sf, float threshold
     cornersImg.scale(1.0f / sf, 1.0f / sf);
     cornersImg.binaryThreshold(threshold);
 
+    Kernel<3, 3> dilationKernel {};
+    kernelFromFile(dilationKernel, "dilation_3");
+    cornersImg.convolve(0, [](float x)->float { return (x > 0.0f) ? 255.0f : 0.0f; }, dilationKernel);
+    cornersImg.convolve(0, [](float x)->float { return (x > 0.0f) ? 255.0f : 0.0f; }, dilationKernel);
+    cornersImg.convolve(0, [](float x)->float { return (x > 0.0f) ? 255.0f : 0.0f; }, dilationKernel);
+    cornersImg.convolve(0, [](float x)->float { return (x > 0.0f) ? 255.0f : 0.0f; }, dilationKernel);
+
     // Output
-    img = cornersImg;
+    img = ~cornersImg;
 }
 
 int main(int argc, char** argv)
