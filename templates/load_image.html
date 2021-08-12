@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Load Image{% endblock %}
+{% block content %}
+<form method = 'post' enctype = 'multipart/form-data'>
+  <div>
+    <input type = 'file' name = 'file' id = 'file' required>
+  </div>
+  <input class = 'file-upload-btn' type = 'submit' value = 'Load Image'>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Scanned Image{% endblock %}
+{% block content %}
+<script src="{{url_for('static', filename='p5.min.js')}}"></script>
+<script src="{{url_for('static', filename='result.js')}}"></script>
+
+<div class = "outsideWrapper" id='imgdiv'>
+  <img class = "coveredImage" id='img' src="data:image/jpg;base64,{{ img }}" alt="img"  id="imgslot"/>
+</div>
+<div>
+  <br>
+  <form method='post' enctype="multipart/form-data">
+      <input type="submit" value="Download">
+  </form>
+</div>
+{% endblock %}

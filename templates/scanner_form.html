@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Scanner Form{% endblock %}
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    <label for="file">File</label>
+    <input type="file" name="file" id="file" required>
+
+    <label for="operation">Operacion</label>
+    <input name="operation" id="operation" required>
+
+    <label for="min_limit">Min_limit</label>
+    <input name="min_limit" id="min_limit" required>
+
+    <label for="max_limit">Max_limit</label>
+    <input name="max_limit" id="max_limit" required>
+
+    <label for="thres_min">thres_min</label>
+    <input name="thres_min" id="thres_min" required>
+
+    <label for="thres_max">thres_max</label>
+    <input name="thres_max" id="thres_max" required>
+
+    <input type="submit" value="Procesar">
+  </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Filter Image{% endblock %}
+{% block content %}
+<script src = "{{url_for('static', filename='p5.min.js')}}"></script>
+<script src = "{{url_for('static', filename='sketch.js')}}"></script>
+
+<body>
+  <div class = 'outsideWrapper' id = 'imgdiv'>
+    <div class = 'insideWrapper'>
+      <img class = 'coveredImage unselect' id='img' src = "data:image/jpg;base64,{{img}}" alt = 'img' id = 'imgslot'/>
+      <canvas class = 'coveringCanvas' id = 'canvas' name = 'canvas' ></canvas>
+    </div>    
+  </div>
+  <div>
+    <br>
+    <form method = 'post' enctype = 'multipart/form-data'>
+      <p hidden = 'true' name = 'op_list' id = 'op_list'>{{opList}}</p>
+      <label for = 'option'>Operation</label>
+      <select name = 'operation' id = 'operation'></select>
+
+      <input hidden = 'true' name = 'top_left'  id = 'top_left'  value = "{{top_left}}" >
+      <input hidden = 'true' name = 'top_right' id = 'top_right' value = "{{top_right}}">
+      <input hidden = 'true' name = 'bot_left'  id = 'bot_left'  value = "{{bot_left}}">
+      <input hidden = 'true' name = 'bot_right' id = 'bot_right' value = "{{bot_right}}">
+      <input type = 'submit' value = 'Accept'>
+    </form>
+  </div>
+</body>
+{% endblock %}
